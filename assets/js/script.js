@@ -1,11 +1,3 @@
-const quizContainer = document.getElementById('quiz');
-const resultsContainer = document.getElementById('results');
-const submitButton = document.getElementById('submit');
-
-submitButton.addEventListener("click", function (){
-    console.log ("It worked!");
-})
-
 //Questions for Quiz
 var questions = [
     {//Question 1
@@ -42,5 +34,19 @@ var questions = [
 ];
 
 // Javascript for Game itself
+startQuiz.addEventListener("click", function (){
+    console.log (questions);
+    console.log (document.getElementsByClassName('questions'));
+    document.getElementsByClassName('questions')[0].classList.remove('hide');
+    document.getElementsByClassName('questions')[0].classList.add('show');
+    document.getElementsByClassName('startcard')[0].classList.add('hide');
+    for (var i=0; i<questions.length; i++){
+    document.getElementById("card-text").innerHTML = questions[i].title;
+    console.log (document.getElementById("question_one"));
+    document.getElementsByClassName("question_one")[0].innerHTML = questions[i].choices[0];
+    document.getElementsByClassName("question_two")[0].innerHTML = questions[i].choices[1];
+    document.getElementsByClassName("question_three")[0].innerHTML = questions[i].choices[2];
+    document.getElementsByClassName("question_four")[0].innerHTML = questions[i].choices[3];
+}});
 
 
