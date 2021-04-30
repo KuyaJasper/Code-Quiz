@@ -60,12 +60,31 @@ function checkAnswer(Question) {
     }
 }
 
+function gameTimer() {
+  // Sets interval in variable
+  var secondsLeft = 100;
+  var timeEl = document.getElementById("gameTimer");
+  var timerInterval = setInterval(function() {
+    secondsLeft--;
+    timeEl.textContent = secondsLeft;
+
+    if(secondsLeft === 0) {
+      // Stops execution of action at set interval
+      clearInterval(timerInterval);
+    }
+// 1000 mili seconds. Browser goes by milliseconds
+  }, 1000);
+}
+
 startQuiz.addEventListener("click", function () {
     console.log(questions);
+
+    gameTimer();
     console.log(document.getElementsByClassName('questions'));
     document.getElementsByClassName('choices')[0].classList.remove('hide');
     document.getElementsByClassName('choices')[0].classList.add('show');
     document.getElementsByClassName('startcard')[0].classList.add('hide');
+    document.getElementById('startQuiz').classList.add('hide');
 
     title.textContent = questions[count].title;
     choiceOne.textContent = currentQuestion1;
