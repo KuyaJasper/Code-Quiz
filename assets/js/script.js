@@ -36,6 +36,7 @@ var questions = [
 // Javascript for Game itself
 var score = 0
 var count = 0;
+var gameTime = 100;
 var title = document.getElementById("card-question");
 var choiceOne = document.getElementById("choice_one");
 var choiceTwo = document.getElementById("choice_two");
@@ -47,28 +48,27 @@ var currentQuestion3 = questions[count].choices[2];
 var currentQuestion4 = questions[count].choices[3];
 
 
-function checkAnswer(Question) {
-    console.log(Question)
-    console.log(questions[count].answer)
-    console.log(Question === questions[count].answer)
-    if (Question === questions[count].answer) {
-        ++count;
-        ++score;
-    }
-    else {
-        --score;
-    }
-}
+// function checkAnswer(Question) {
+//     console.log(Question)
+//     console.log(questions[count].answer)
+//     console.log(Question === questions[count].answer)
+//     if (Question === questions[count].answer) {
+//         ++count;
+//         ++score;
+//     }
+//     else {
+//         --score;
+//     }
+// }
 
 function gameTimer() {
   // Sets interval in variable
-  var secondsLeft = 100;
   var timeEl = document.getElementById("gameTimer");
   var timerInterval = setInterval(function() {
-    secondsLeft--;
-    timeEl.textContent = secondsLeft;
+    gameTime--;
+    timeEl.textContent = gameTime;
 
-    if(secondsLeft === 0) {
+    if(gameTime === 0) {
       // Stops execution of action at set interval
       clearInterval(timerInterval);
     }
@@ -77,9 +77,8 @@ function gameTimer() {
 }
 
 startQuiz.addEventListener("click", function () {
-    console.log(questions);
-
     gameTimer();
+    console.log(questions);
     console.log(document.getElementsByClassName('questions'));
     document.getElementsByClassName('choices')[0].classList.remove('hide');
     document.getElementsByClassName('choices')[0].classList.add('show');
@@ -92,9 +91,9 @@ startQuiz.addEventListener("click", function () {
     choiceThree.textContent = currentQuestion3;
     choiceFour.textContent = currentQuestion4;
 
-    choiceOne.addEventListener("click", function () { checkAnswer(currentQuestion1) });
-    choiceTwo.addEventListener("click", function () { checkAnswer(currentQuestion2) });
-    choiceThree.addEventListener("click", function () { checkAnswer(currentQuestion3) });
-    choiceFour.addEventListener("click", function () { checkAnswer(currentQuestion4) });
-    console.log(score);
+    // choiceOne.addEventListener("click", function () { checkAnswer(currentQuestion1) });
+    // choiceTwo.addEventListener("click", function () { checkAnswer(currentQuestion2) });
+    // choiceThree.addEventListener("click", function () { checkAnswer(currentQuestion3) });
+    // choiceFour.addEventListener("click", function () { checkAnswer(currentQuestion4) });
+    // console.log(score);
 });
