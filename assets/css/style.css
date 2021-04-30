@@ -11,3 +11,7 @@
 .show{
   display: inline-block;
 }
+
+.choices {
+  list-style-type: none;
+}

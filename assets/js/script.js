@@ -34,19 +34,48 @@ var questions = [
 ];
 
 // Javascript for Game itself
-startQuiz.addEventListener("click", function (){
-    console.log (questions);
-    console.log (document.getElementsByClassName('questions'));
-    document.getElementsByClassName('questions')[0].classList.remove('hide');
-    document.getElementsByClassName('questions')[0].classList.add('show');
+var score = 0
+var count = 0;
+var title = document.getElementById("card-question");
+var choiceOne = document.getElementById("choice_one");
+var choiceTwo = document.getElementById("choice_two");
+var choiceThree = document.getElementById("choice_three");
+var choiceFour = document.getElementById("choice_four");
+var currentQuestion1 = questions[count].choices[0];
+var currentQuestion2 = questions[count].choices[1];
+var currentQuestion3 = questions[count].choices[2];
+var currentQuestion4 = questions[count].choices[3];
+
+
+function checkAnswer(Question) {
+    console.log(Question)
+    console.log(questions[count].answer)
+    console.log(Question === questions[count].answer)
+    if (Question === questions[count].answer) {
+        ++count;
+        ++score;
+    }
+    else {
+        --score;
+    }
+}
+
+startQuiz.addEventListener("click", function () {
+    console.log(questions);
+    console.log(document.getElementsByClassName('questions'));
+    document.getElementsByClassName('choices')[0].classList.remove('hide');
+    document.getElementsByClassName('choices')[0].classList.add('show');
     document.getElementsByClassName('startcard')[0].classList.add('hide');
-    for (var i=0; i<questions.length; i++){
-    document.getElementById("card-text").innerHTML = questions[i].title;
-    console.log (document.getElementById("question_one"));
-    document.getElementsByClassName("question_one")[0].innerHTML = questions[i].choices[0];
-    document.getElementsByClassName("question_two")[0].innerHTML = questions[i].choices[1];
-    document.getElementsByClassName("question_three")[0].innerHTML = questions[i].choices[2];
-    document.getElementsByClassName("question_four")[0].innerHTML = questions[i].choices[3];
-}});
 
+    title.textContent = questions[count].title;
+    choiceOne.textContent = currentQuestion1;
+    choiceTwo.textContent = currentQuestion2;
+    choiceThree.textContent = currentQuestion3;
+    choiceFour.textContent = currentQuestion4;
 
+    choiceOne.addEventListener("click", function () { checkAnswer(currentQuestion1) });
+    choiceTwo.addEventListener("click", function () { checkAnswer(currentQuestion2) });
+    choiceThree.addEventListener("click", function () { checkAnswer(currentQuestion3) });
+    choiceFour.addEventListener("click", function () { checkAnswer(currentQuestion4) });
+    console.log(score);
+});
