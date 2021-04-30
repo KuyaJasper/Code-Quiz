@@ -19,7 +19,7 @@ var questions = [
     },
 
     {//Question 4
-        title: "Choose the syntax that will create a function called: Codingisasy.",
+        title: "Choose the Javascript syntax that will create a function called: Codingisasy.",
         choices: ["function = CodingisEasy()", "function:CodingisEasy()", "function = #CodingisEasy()", "function(CodingisEasy)"],
         answer: "function = CodingisEasy()"
     },
@@ -86,6 +86,11 @@ function gameTimer() {
   }, 1000);
 }
 
+function gameScore(){
+    var scoreEL = document.getElementById("gameScore");
+    scoreEL.textContent = score;
+}
+
 function gameQuestions (){
     title.textContent = questions[count].title;
     for (var i = 0; i<4; i++){
@@ -103,6 +108,8 @@ function gameQuestions (){
 }
 
 startQuiz.addEventListener("click", function () {
+        var scoreEL = document.getElementById("gameScore");
+    scoreEL.textContent = score;
     gameTimer();
     console.log(questions);
     console.log(document.getElementsByClassName('questions'));
