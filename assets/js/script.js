@@ -20,8 +20,8 @@ var questions = [
 
     {//Question 4
         title: "Choose the Javascript syntax that will create a function called: CodingisEasy.",
-        choices: ["function = CodingisEasy()", "function:CodingisEasy()", "function = #CodingisEasy()", "function(CodingisEasy)"],
-        answer: "function = CodingisEasy()"
+        choices: ["function CodingisEasy()", "function:CodingisEasy()", "function = #CodingisEasy()", "function(CodingisEasy)"],
+        answer: "function CodingisEasy()"
     },
 
     {//Question 5
@@ -54,6 +54,7 @@ var currentQuestion4 = questions[count].choices[3];
 
 // Checking answers for event listener which is codeded into the HTML
 function checkAnswer(event) {
+    scoreEL.textContent = score;
     console.log("your choice is:" + event.target.textContent)
     console.log("the correct answer is:" + questions[count].answer)
     // console.log(event.target.textContent === questions[count].answer)
@@ -86,6 +87,7 @@ var countdown = setInterval(function() {
       }else if (gameTime < 0){
           gameTimeStop(countdown);
           timeEl.textContent= 0;
+          scoreEL.textContent = score;
           alert("Game Over");
           window.location.href = "./yourscore.html";
       }
@@ -98,6 +100,7 @@ function gameTimeStop(interval) {
 }
 
 function gameQuestions (){
+    scoreEL.textContent = score;
     title.textContent = questions[count].title;
     for (var i = 0; i<4; i++){
         if(i === 0){
