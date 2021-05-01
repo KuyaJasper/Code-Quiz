@@ -34,9 +34,11 @@ var questions = [
 ];
 
 // Javascript for Game itself
-var score = 0
+var score = 0;
+var scoreEL = document.getElementById("gameScore");
 var count = 0;
-var gameTime = 100;
+var gameTime = 30;
+var timeEl = document.getElementById("gameTimer");
 var title = document.getElementById("card-question");
 var choiceOne = document.getElementById("choice_one");
 var choiceTwo = document.getElementById("choice_two");
@@ -50,14 +52,15 @@ var currentQuestion4 = questions[count].choices[3];
 
 // Checking answers for event listener which is codeded into the HTML
 function checkAnswer(event) {
-    console.log(event.target.textContent)
-    console.log(questions[count].answer)
-    console.log(event.target.textContent === questions[count].answer)
+    console.log("your choice is:" + event.target.textContent)
+    console.log("the correct answer is:" + questions[count].answer)
+    // console.log(event.target.textContent === questions[count].answer)
     if (event.target.textContent === questions[count].answer) {
-        score++;
+        score+=100;
+        gameTime+=10;
     }
     else {
-        score--;
+        score-=100;
         gameTime-= 10;
     }
 
@@ -71,27 +74,8 @@ function checkAnswer(event) {
     }
 }
 
-function gameTimer() {
-  // Sets interval in variable
-  var timeEl = document.getElementById("gameTimer");
-  var timerInterval = setInterval(function() {
-    gameTime--;
-    timeEl.textContent = gameTime;
-
-    if(gameTime === 0) {
-      // Stops execution of action at set interval
-      clearInterval(timerInterval);
-    }
-// 1000 mili seconds. Browser goes by milliseconds
-  }, 1000);
-}
-
-function gameScore(){
-    var scoreEL = document.getElementById("gameScore");
-    scoreEL.textContent = score;
-}
-
 function gameQuestions (){
+    scoreEL.textContent = score;
     title.textContent = questions[count].title;
     for (var i = 0; i<4; i++){
         if(i === 0){
@@ -108,21 +92,28 @@ function gameQuestions (){
 }
 
 startQuiz.addEventListener("click", function () {
-        var scoreEL = document.getElementById("gameScore");
-    scoreEL.textContent = score;
-    gameTimer();
-    console.log(questions);
-    console.log(document.getElementsByClassName('questions'));
+      // Sets interval in variable
+  var timerInterval = setInterval(function() {
+    gameTime--;
+    timeEl.textContent = gameTime;
+    if(gameTime === 0) {
+      // Stops execution of action at set interval
+      clearInterval(timerInterval);
+    }
+// 1000 mili seconds. Browser goes by milliseconds
+  }, 1000);
     document.getElementsByClassName('choices')[0].classList.remove('hide');
     document.getElementsByClassName('choices')[0].classList.add('show');
     document.getElementsByClassName('startcard')[0].classList.add('hide');
     document.getElementById('startQuiz').classList.add('hide');
 
 gameQuestions();
-
-    // choiceOne.addEventListener("click", function () { checkAnswer() });
-    // choiceTwo.addEventListener("click", function () { checkAnswer() });
-    // choiceThree.addEventListener("click", function () { checkAnswer() });
-    // choiceFour.addEventListener("click", function () { checkAnswer() });
-    console.log(score);
 });
+
+
+
+// if (gameTime === 0) {
+//     alert("Game Over")
+// }else {
+//     gameQuestions();
+// }
