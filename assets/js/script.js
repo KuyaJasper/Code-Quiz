@@ -19,7 +19,7 @@ var questions = [
     },
 
     {//Question 4
-        title: "Choose the Javascript syntax that will create a function called: Codingisasy.",
+        title: "Choose the Javascript syntax that will create a function called: CodingisEasy.",
         choices: ["function = CodingisEasy()", "function:CodingisEasy()", "function = #CodingisEasy()", "function(CodingisEasy)"],
         answer: "function = CodingisEasy()"
     },
@@ -69,7 +69,8 @@ function checkAnswer(event) {
     count++;
 
     if (count == questions.length) {
-        alert("Game Over")
+        alert("Game Over");
+        window.location.href = "./yourscore.html";
         // set up in game function here later. reset the game, or send you to highscores HTML
     }else {
         gameQuestions();
@@ -85,7 +86,8 @@ var countdown = setInterval(function() {
       }else if (gameTime < 0){
           gameTimeStop(countdown);
           timeEl.textContent= 0;
-          alert("Game Over")
+          alert("Game Over");
+          window.location.href = "./yourscore.html";
       }
   }, 1000);
 }
