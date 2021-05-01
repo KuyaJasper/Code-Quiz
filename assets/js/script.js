@@ -1,7 +1,7 @@
 //Questions for Quiz
 var questions = [
     {//Question 1
-        title: "Which of the following tags creates a button in HTML",
+        title: "Which of the following tags creates a button in HTML:",
         choices: ["<br>", "<footer></footer>", "<div></div>", "<button></button>"],
         answer: "<button></button>"
     },
@@ -50,6 +50,8 @@ var currentQuestion3 = questions[count].choices[2];
 var currentQuestion4 = questions[count].choices[3];
 
 
+
+
 // Checking answers for event listener which is codeded into the HTML
 function checkAnswer(event) {
     console.log("your choice is:" + event.target.textContent)
@@ -68,14 +70,32 @@ function checkAnswer(event) {
 
     if (count == questions.length) {
         alert("Game Over")
-        // set up in game function here later.
+        // set up in game function here later. reset the game, or send you to highscores HTML
     }else {
         gameQuestions();
     }
 }
 
+function gameTimer() {
+var countdown = setInterval(function() {
+    timeEl.textContent = gameTime;
+    gameTime--;
+    if(gameTime === 0){
+        gameTimeStop(countdown);
+      }else if (gameTime < 0){
+          gameTimeStop(countdown);
+          timeEl.textContent= 0;
+          alert("Game Over")
+      }
+  }, 1000);
+}
+function gameTimeStop(interval) {
+    let gameTime = 0;
+    timeEl.textContent = gameTime;
+    clearInterval(interval);
+}
+
 function gameQuestions (){
-    scoreEL.textContent = score;
     title.textContent = questions[count].title;
     for (var i = 0; i<4; i++){
         if(i === 0){
@@ -92,28 +112,12 @@ function gameQuestions (){
 }
 
 startQuiz.addEventListener("click", function () {
-      // Sets interval in variable
-  var timerInterval = setInterval(function() {
-    gameTime--;
+    scoreEL.textContent = score;
     timeEl.textContent = gameTime;
-    if(gameTime === 0) {
-      // Stops execution of action at set interval
-      clearInterval(timerInterval);
-    }
-// 1000 mili seconds. Browser goes by milliseconds
-  }, 1000);
+    gameTimer();
+    gameQuestions();
     document.getElementsByClassName('choices')[0].classList.remove('hide');
     document.getElementsByClassName('choices')[0].classList.add('show');
     document.getElementsByClassName('startcard')[0].classList.add('hide');
     document.getElementById('startQuiz').classList.add('hide');
-
-gameQuestions();
 });
-
-
-
-// if (gameTime === 0) {
-//     alert("Game Over")
-// }else {
-//     gameQuestions();
-// }

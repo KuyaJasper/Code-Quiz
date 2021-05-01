@@ -26,13 +26,15 @@
             <div class="card border-dark mb-3 box-shadow">
 <!-- Card Title -->
                 <div class="card-header" >
-                    <h3 class="my-0 font-weight-strong text-center" id="card-question">Coding Quiz Challenge</h3>
+                    <h2 class="my-0 font-weight-strong text-center" id="card-question">Coding Quiz Challenge</h2>
                 </div>
 <!--Instructions and Start Quiz Button-->
                 <div class="card-body">
                     <ul class="list-unstyled mt-3 mb-4 text-center startcard">
-                        <p>Try to answer the following code-related questions within the time limit. Wrong answers will
-                            decrease your time by 10 seconds!</p>
+                        <h1>Instructions:</h1><br>
+                        <p>Answer the following questions within the 30 second time limit.</p> 
+                        <p>Wrong answers will decrease your time by 10 seconds!</p>
+                        <p>Correct answers will increase your time by 10 seconds!</p>
                         <p class="text-center">Good luck!</p>
                     </ul>
                     <button type="button" id="startQuiz" class="btn btn-lg btn-block btn-outline-info">Start
@@ -42,10 +44,10 @@
 
                 <div class="container text-center mt-1 mb-4" id="card-choice">
                     <ul class="choices hide">
-                        <li><button class = "choiceButtons btn btn-outline-dark" id="choice_one" onclick="checkAnswer(event)"></button></li>
-                        <li><button class = "choiceButtons btn btn-outline-dark " id="choice_two" onclick="checkAnswer(event)"></button></li>
-                        <li><button class = "choiceButtons btn btn-outline-dark  " id="choice_three" onclick="checkAnswer(event)"></button></li>
-                        <li><button class = "choiceButtons btn btn-outline-dark" id="choice_four" onclick="checkAnswer(event)"></button></li>
+                        <li><button class = "choiceButtons btn btn-lg btn-outline-dark" id="choice_one" onclick="checkAnswer(event)"></button></li>
+                        <li><button class = "choiceButtons btn btn-lg btn-outline-dark " id="choice_two" onclick="checkAnswer(event)"></button></li>
+                        <li><button class = "choiceButtons btn btn-lg btn-outline-dark  " id="choice_three" onclick="checkAnswer(event)"></button></li>
+                        <li><button class = "choiceButtons btn btn-lg btn-outline-dark" id="choice_four" onclick="checkAnswer(event)"></button></li>
                     </ul>
                 </div>
             </div>
