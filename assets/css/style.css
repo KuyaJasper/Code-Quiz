@@ -30,3 +30,7 @@ li {
 .btn:focus,.btn:active {
   box-shadow: none;
 }
+
+#PlayerFinalScore {
+  font-size:  100px;
+}

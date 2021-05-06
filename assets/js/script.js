@@ -73,7 +73,6 @@ function checkAnswer(event) {
     count++;
 
     if (count == questions.length) {
-        alert("Game Over");
         endGame();
         // set up in game function here later. reset the game, or send you to highscores HTML
     }else {
@@ -91,10 +90,14 @@ var countdown = setInterval(function() {
           gameTimeStop(countdown);
           timeEl.textContent= 0;
           scoreEL.textContent = score;
-          alert("Game Over");
           endGame();
       }
   }, 1000);
+}
+function gameTimeStop(interval) {
+    let gameTime = 0;
+    timeEl.textContent = gameTime;
+    clearInterval(interval);
 }
 
 function gameQuestions (){
@@ -116,6 +119,8 @@ function gameQuestions (){
 }
 
 function endGame (){
+    PlayerFinalScore.textContent = score;
+    gameTimeStop();
     document.getElementById('finalScore').classList.remove('hide');
     document.getElementById('finalScore').classList.add('show');
     document.getElementsByClassName('choices')[0].classList.remove('show');
@@ -124,6 +129,7 @@ function endGame (){
     document.getElementById('cardScore').classList.remove('hide');
     timeEl.classList.add('hide');
     scoreEL.classList.add('hide');
+    
 }
 
 startQuiz.addEventListener("click", function () {
