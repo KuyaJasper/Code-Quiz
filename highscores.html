@@ -4,11 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://bootswatch.com/4/journal/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <title>Highscores</title>
 </head>
 <body>
     <a href="./index.html" class="btn btn-primary" id="highscores-btn">
         Home</a>
-    
+
+        <div class="row" id="startDiv">
+            <div class="col-md-6 mx-auto mt-5">
+                <div class="card border-dark mb-3 box-shadow">
+    <!-- Card Title -->
+                    <div class="card-header" id="scoresContainer" >
+                        <h2 class="my-0 font-weight-strong text-center" id="card-question">Highscores</h2>
+                    </div>
+
+                    <div class="card-body">
+                        <ul class="mt-3 mb-4 text-center startcard">
+                            <ol id= "scoreList"></ol>
+                        </ul>
+                        <div class="button" id="clearButton"> Clear</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+    <script src="./assets/js/highscore.js"></script>
 </body>
 </html>
