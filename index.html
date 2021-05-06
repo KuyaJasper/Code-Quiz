@@ -49,6 +49,20 @@
                         <li><button class = "choiceButtons btn btn-lg btn-outline-dark" id="choice_four" onclick="checkAnswer(event)"></button></li>
                     </ul>
                 </div>
+
+<!-- Final Score -->
+
+<div class="finalScore container text-center mt-1 mb-4 hide" id="finalScore">
+    <ul class="score">
+        <h2> Your Final Score is:</h2>
+        <li> <span class="rightAnswers">0</span></li>
+    </ul>
+    <form class="form-group">
+        <label for="new-score">Enter your name: </label>
+        <input type="text" id="userName">
+        <button type="button" class="btn submitBtn" id="submitButton">Submit Score</button>
+    </form>
+</div>
             </div>
         </div>
     </div>

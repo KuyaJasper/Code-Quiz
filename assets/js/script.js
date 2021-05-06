@@ -48,6 +48,7 @@ var currentQuestion1 = questions[count].choices[0];
 var currentQuestion2 = questions[count].choices[1];
 var currentQuestion3 = questions[count].choices[2];
 var currentQuestion4 = questions[count].choices[3];
+var submitButton = document.getElementById("submitButton");
 
 
 
@@ -71,7 +72,7 @@ function checkAnswer(event) {
 
     if (count == questions.length) {
         alert("Game Over");
-        window.location.href = "./yourscore.html";
+        endGame();
         // set up in game function here later. reset the game, or send you to highscores HTML
     }else {
         gameQuestions();
@@ -89,7 +90,7 @@ var countdown = setInterval(function() {
           timeEl.textContent= 0;
           scoreEL.textContent = score;
           alert("Game Over");
-          window.location.href = "./yourscore.html";
+          endGame();
       }
   }, 1000);
 }
@@ -116,6 +117,13 @@ function gameQuestions (){
     
 }
 
+function endGame (){
+    document.getElementsByClassName('finalScore').classList.remove('hide');
+    document.getElementsByClassName('finalScore').classList.add('show');
+    document.getElementsByClassName('choices')[0].classList.remove('show');
+    document.getElementsByClassName('choices')[0].classList.add('hide');
+}
+
 startQuiz.addEventListener("click", function () {
     scoreEL.textContent = score;
     timeEl.textContent = gameTime;
@@ -126,3 +134,23 @@ startQuiz.addEventListener("click", function () {
     document.getElementsByClassName('startcard')[0].classList.add('hide');
     document.getElementById('startQuiz').classList.add('hide');
 });
+
+submitButton/addEventListener("click", function(e) {
+    e.stopPropagation();
+    addScore();
+    window.location.href = './highscores.html'
+});
+
+
+function addScore () {
+    userNameInput = document.getElementById('username').nodeValue.trim()
+
+    let newScore = {
+        name: userNameInput,
+        score:0
+    };
+    console.log(newScore);
+    var highScores = JSON.parse(localStorage.getItem("highScores") || "[]");
+    highScores.push(newScore)
+    localStorage.setItem("highScores",JSON.stringify(highScores));
+}
