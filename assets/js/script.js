@@ -48,7 +48,8 @@ var currentQuestion1 = questions[count].choices[0];
 var currentQuestion2 = questions[count].choices[1];
 var currentQuestion3 = questions[count].choices[2];
 var currentQuestion4 = questions[count].choices[3];
-var submitButton = document.getElementById("submitButton");
+var submitButton = document.getElementsByClassName("submitBtn");
+var PlayerFinalScore = document.getElementById("PlayerFinalScore");
 
 
 
@@ -56,6 +57,7 @@ var submitButton = document.getElementById("submitButton");
 // Checking answers for event listener which is codeded into the HTML
 function checkAnswer(event) {
     scoreEL.textContent = score;
+    PlayerFinalScore.textContent = score;
     console.log("your choice is:" + event.target.textContent)
     console.log("the correct answer is:" + questions[count].answer)
     // console.log(event.target.textContent === questions[count].answer)
@@ -94,14 +96,10 @@ var countdown = setInterval(function() {
       }
   }, 1000);
 }
-function gameTimeStop(interval) {
-    let gameTime = 0;
-    timeEl.textContent = gameTime;
-    clearInterval(interval);
-}
 
 function gameQuestions (){
     scoreEL.textContent = score;
+    PlayerFinalScore.textContent = score;
     title.textContent = questions[count].title;
     for (var i = 0; i<4; i++){
         if(i === 0){
@@ -118,10 +116,14 @@ function gameQuestions (){
 }
 
 function endGame (){
-    document.getElementsByClassName('finalScore').classList.remove('hide');
-    document.getElementsByClassName('finalScore').classList.add('show');
+    document.getElementById('finalScore').classList.remove('hide');
+    document.getElementById('finalScore').classList.add('show');
     document.getElementsByClassName('choices')[0].classList.remove('show');
     document.getElementsByClassName('choices')[0].classList.add('hide');
+    document.getElementById('card-question').classList.add('hide');
+    document.getElementById('cardScore').classList.remove('hide');
+    timeEl.classList.add('hide');
+    scoreEL.classList.add('hide');
 }
 
 startQuiz.addEventListener("click", function () {
@@ -135,11 +137,11 @@ startQuiz.addEventListener("click", function () {
     document.getElementById('startQuiz').classList.add('hide');
 });
 
-submitButton/addEventListener("click", function(e) {
-    e.stopPropagation();
-    addScore();
-    window.location.href = './highscores.html'
-});
+// submitButton.addEventListener("click", function(e) {
+//     e.stopPropagation();
+//     // addScore();
+//     window.location.href = './highscores.html'
+// });
 
 
 function addScore () {

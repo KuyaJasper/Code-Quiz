@@ -1,5 +1,5 @@
 let highScores = JSON.parse(localStorage.getItem("highScores") || "[]");
-let scoreList = documentgetElementbyID("scoreLIst");
+// let scoreList = documentgetElementbyID("scoreLIst");
 let clearButton = documentgetElementbyID("clearButton");
 
 highScores.sort(function (a,b) {

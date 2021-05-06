@@ -27,11 +27,12 @@
 <!-- Card Title -->
                 <div class="card-header" >
                     <h2 class="my-0 font-weight-strong text-center" id="card-question">Coding Quiz Challenge</h2>
+                    <h2 class="my-0 font-weight-strong text-center hide" id="cardScore">Your Final Score is:</h2>
                 </div>
 <!--Instructions and Start Quiz Button-->
                 <div class="card-body">
-                    <h1 class="text-center">Instructions:</h1>
                     <ul class="mt-3 mb-4 text-center startcard">
+                        <div class="text-center show" id="Instructions"><h1>Instructions:</h1></div>
                         <p>Answer the following questions within the 30 second time limit.</p> 
                         <p>Wrong answers will decrease your score, and you will lose 10 seconds!</p>
                         <p>Correct answers will increase your score, and you will gain 10 seconds!</p>
@@ -52,16 +53,13 @@
 
 <!-- Final Score -->
 
-<div class="finalScore container text-center mt-1 mb-4 hide" id="finalScore">
-    <ul class="score">
-        <h2> Your Final Score is:</h2>
-        <li> <span class="rightAnswers">0</span></li>
-    </ul>
+<div class="container text-center mb-4 hide" id="finalScore">
+    <h1 id="PlayerFinalScore"></h1>
     <form class="form-group">
-        <label for="new-score">Enter your name: </label>
-        <input type="text" id="userName">
-        <button type="button" class="btn submitBtn" id="submitButton">Submit Score</button>
-    </form>
+        <label for="new-score"><h2>Enter your name:</h2></label>
+        <br>
+        <input type="text" id="userName"></form>
+    <button type="button" class="btn btn-lg btn-outline-dark" id="submitButton" onclick="endGame()">Submit Score</button>
 </div>
             </div>
         </div>

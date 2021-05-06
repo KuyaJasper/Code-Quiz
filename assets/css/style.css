@@ -12,7 +12,7 @@
   display: inline-block;
 }
 
-.choices {
+li {
   list-style-type: none;
 }
 
