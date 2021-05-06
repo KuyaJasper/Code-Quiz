@@ -143,22 +143,15 @@ startQuiz.addEventListener("click", function () {
     document.getElementById('startQuiz').classList.add('hide');
 });
 
-// submitButton.addEventListener("click", function(e) {
-//     e.stopPropagation();
-//     // addScore();
-//     window.location.href = './highscores.html'
-// });
+submitButton.addEventListener("click", function(e) {
+e.preventDefault();
+var PlayerScore = document.querySelector("#PlayerFinalScore").value;
+var userName = document.querySelector("#userName").value;
+localStorage.setItem("PlayerScore", PlayerScore);
+localStorage.setItem("userName", userName);
+});
 
 
 function addScore () {
-    userNameInput = document.getElementById('username').nodeValue.trim()
-
-    let newScore = {
-        name: userNameInput,
-        score:0
-    };
-    console.log(newScore);
-    var highScores = JSON.parse(localStorage.getItem("highScores") || "[]");
-    highScores.push(newScore)
-    localStorage.setItem("highScores",JSON.stringify(highScores));
+PlayerFinalScore.localStorage.getItem
 }

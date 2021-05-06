@@ -1,16 +1,14 @@
-let highScores = JSON.parse(localStorage.getItem("highScores") || "[]");
-// let scoreList = documentgetElementbyID("scoreLIst");
-let clearButton = documentgetElementbyID("clearButton");
+var userName = document.getElementById('userName');
+var userScore = document.getElementById("userScore");
 
-highScores.sort(function (a,b) {
-    return b.score - a.score
-})
+renderUserScore();
 
-for (var i=0; i <highScores.length; i++) {
-    var newLi = document.createElement("li")
-    newLi.textContent = highScores[i].name + "-" + highScores[i].score
-    scoreList.apendChild(newLi)
+function renderUserScore() {
+    var finalscore = localStorage.getItem("PlayerScore");
+    var finalname = localStorage.getItem("userName");
 }
+
+
 
 clearButton.addEventListener("click", function () {
     localStorage.clear();
