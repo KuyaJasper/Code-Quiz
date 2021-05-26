@@ -50,6 +50,7 @@ var currentQuestion3 = questions[count].choices[2];
 var currentQuestion4 = questions[count].choices[3];
 var submitButton = document.getElementById("submitButton");
 var PlayerFinalScore = document.getElementById("PlayerFinalScore");
+var startOverBtn= document.querySelector("#newQuiz");
 
 
 
@@ -132,16 +133,22 @@ function endGame (){
     
 }
 
-// function localStorageData (userData){
-//     let userHistory;
-//     if (localStorage.getItem("History") === null) {
-//       userHistory = [];
-//     } else {
-//       userHistory = JSON.parse(localStorage.getItem("History"));
-//     }
-//     userHistory.push(userData);
-//     localStorage.setItem("History", JSON.stringify(userHistory));
-// }
+function localStorageData (userData){
+
+    // TODO FIX LOCAL STORAGE LOCATIONS/FUNCTIONS
+    let userHistory;
+    if (localStorage.getItem("History") === null) {
+      userHistory = [];
+    } else {
+      userHistory = JSON.parse(localStorage.getItem("History",PlayerScore, userName));
+    }
+    var PlayerScore = score;
+var userName = document.querySelector("#userName").value;
+    userHistory.push(userData);
+    localStorage.setItem("History", JSON.stringify(PlayerScore, userName));
+    localStorage.setItem("PlayerScore", PlayerScore);
+localStorage.setItem("userName", userName);
+}
 
 startQuiz.addEventListener("click", function () {
     scoreEL.textContent = score;
@@ -154,29 +161,18 @@ startQuiz.addEventListener("click", function () {
     document.getElementById('startQuiz').classList.add('hide');
 });
 
-submitButton.addEventListener("click", function(e) {
-e.preventDefault();
-var PlayerScore = score;
-var userName = document.querySelector("#userName").value;
-localStorage.setItem("PlayerScore", PlayerScore);
-localStorage.setItem("userName", userName);
+submitButton.addEventListener("click", function(event) {
+event.preventDefault();
 window.location.replace("./highscores.html");
+pageloadFunction();
 });
 
 
-
-// function pageloadFunction() {
-//     let userHistory;
-//     if (localStorage.getItem("History") === null) {
-//       userHistory = [];
-//     } else {
-//       userHistory = JSON.parse(localStorage.getItem("History"));
-//       historyTitle.classList.remove("hide");
-//       clearBtn.classList.remove("hide");
-//       weatherContainer.classList.remove("hide");
-//     }
-  
-//     userHistory.forEach((userData) => {
-//       searchHistoryButton(userData);
-//     });
-//   }
+function pageloadFunction() {
+    let userHistory;
+    if (localStorage.getItem("History") === null) {
+      userHistory = [];
+    } else {
+      userHistory = JSON.parse(localStorage.getItem("History"));
+    }
+  }
