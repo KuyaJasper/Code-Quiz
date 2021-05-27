@@ -149,12 +149,6 @@ function localStorageData() {
   console.log(gameScore);
 
   var userHistory = JSON.parse(localStorage.getItem('userHistory') || "[]");
-  //   let userHistory;
-  // if (localStorage.getItem("userHistory") === null) {
-  //   userHistory = [];} 
-  //   else {
-  //   userHistory = JSON.parse(localStorage.getItem("userHistory"));
-  // }
 
   userHistory.push(gameScore);
 

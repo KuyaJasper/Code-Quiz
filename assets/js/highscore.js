@@ -7,15 +7,20 @@ renderUserScore();
 
 function renderUserScore() {
 //GOAL: Create a new element, have it set both, append child.
-    var finalscore = localStorage.getItem("PlayerScore");
-    var finalname = localStorage.getItem("userName");
+    var userHistory = JSON.parse(localStorage.getItem('userHistory') || "[]");
+    var finalscore = JSON.parse(localStorage.getItem('userHistory'));
+    var finalname = userHistory.name;
+    console.log(userHistory[0].name);
+    console.log(userHistory[0].score);
+
     // userName.textContent = finalname;
     // userScore.textContent = finalscore;
-    var currentScore = document.querySelector("#scoreList");
-    var newScoreContainer = document.createElement('div');
-    var newScore = document.createTextNode(`Name: ${finalname} | Score: ${finalscore}`);
-    newScoreContainer.appendChild(newScore);
-    currentScore.appendChild(newScoreContainer);
+
+    // var currentScore = document.querySelector("#scoreList");
+    // var newScoreContainer = document.createElement('div');
+    // var newScore = document.createTextNode(`Name: ${finalname} | Score: ${finalscore}`);
+    // newScoreContainer.appendChild(newScore);
+    // currentScore.appendChild(newScoreContainer);
 }
 
 
