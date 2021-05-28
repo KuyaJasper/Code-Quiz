@@ -13,7 +13,7 @@ renderUserScore();
 function renderUserScore() {
 
     for (var i=0; i< userHistory.length; i++){
-        var newScore = document.createElement('li');
+        var newScore = document.createElement('h4');
         newScore.textContent= `Name: ${userHistory[i].name} || Score: ${userHistory[i].score}`
         scoreList.appendChild(newScore)
     }
